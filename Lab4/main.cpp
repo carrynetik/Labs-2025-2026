@@ -42,37 +42,45 @@ int main() {
 
 
     // Пункт 2
+
     std::cout << "Пункт 2" << std::endl;
-    const int stroki = 3;  
-    const int stolb = 4;   
+    const int stroki = 3;
+    const int stolb = 4;
     int matrix[stroki][stolb];
     
     std::cout << "Введите матрицу " << stroki << "x" << stolb << ":" << std::endl;
-    for (int i = 0; i < stroki; ++i) {     
-        for (int j = 0; j < stolb; ++j) {  
+    for (int i = 0; i < stroki; ++i) {
+        for (int j = 0; j < stolb; ++j) {
             std::cin >> matrix[i][j];
         }
     }
-    int max_stolb_otr = 0;      // номер столбца с макс количеством отрицательных
-    int max_kolvo_otr = 0;      // максимальное количество отрицательных в столбце
-    for (int j = 0; j < stolb; ++j) {  
-        int kolvo_otr = 0;  // счетчик отрицательных чисел в текущем столбце
-        for (int i = 0; i < stroki; ++i) {  // перебираем все строки в столбце j
+    
+    int max_stolb_otr = -1;
+    int max_kolvo_otr = 0;
+    
+    for (int j = 0; j < stolb; ++j) {
+        int kolvo_otr = 0;
+        for (int i = 0; i < stroki; ++i) {
             if (matrix[i][j] < 0) {
                 kolvo_otr++;
             }
         }
         if (kolvo_otr > max_kolvo_otr) {
-            max_kolvo_otr = kolvo_otr; 
-            max_stolb_otr = j;         
+            max_kolvo_otr = kolvo_otr;
+            max_stolb_otr = j;
         }
     }
-    std::cout << "Столбец с наибольшим количеством отрицательных: " << max_stolb_otr << std::endl;
-    std::cout << "Количество отрицательных в нем: " << max_kolvo_otr << std::endl;
-    for (int i = 0; i < stroki; ++i) {
-        matrix[i][max_stolb_otr] = -1;  // заменяем каждое число в столбце на -1
+    
+    if (max_stolb_otr == -1) {
+        std::cout << "В матрице нет отрицательных чисел" << std::endl;
+    } else {
+        std::cout << "Столбец с наибольшим количеством отрицательных: " << max_stolb_otr << std::endl;
+        for (int i = 0; i < stroki; ++i) {
+            matrix[i][max_stolb_otr] = -1;
+        }
+        std::cout << "Измененная матрица:" << std::endl;
     }
-    std::cout << "Измененная матрица:" << std::endl;
+    
     for (int i = 0; i < stroki; ++i) {
         for (int j = 0; j < stolb; ++j) {
             std::cout << matrix[i][j] << " ";
