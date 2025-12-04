@@ -5,13 +5,13 @@ int* modifyMatrix(int**& mat, int& row_cnt, int& col_cnt, int A_val, int B_val, 
     int new_row_cnt = 2 + A_val;
     int new_col_cnt = 2 + B_val;
 
-    // сохраняем исходные значения
+    
     int saveA = mat[0][0];
     int saveB = mat[0][1]; 
     int saveC = mat[1][0];
     int saveD = mat[1][1];
 
-    // изменяем размер матрицы
+    //размер матрицы
     mat = (int**)realloc(mat, new_row_cnt * sizeof(int*));
     for(int i = 0; i < new_row_cnt; i++) {
         if(i < row_cnt) {
@@ -27,7 +27,7 @@ int* modifyMatrix(int**& mat, int& row_cnt, int& col_cnt, int A_val, int B_val, 
     row_cnt = new_row_cnt;
     col_cnt = new_col_cnt;
 
-    // заполняем матрицу по условию
+    //заполняем матрицу по условию задачи вар чет
     for(int i = 0; i < row_cnt; i++) {
         for(int j = 0; j < col_cnt; j++) {
             if(i >= A_val && j >= B_val) {
@@ -39,13 +39,13 @@ int* modifyMatrix(int**& mat, int& row_cnt, int& col_cnt, int A_val, int B_val, 
         }
     }
     
-    // восстанавливаем исходные значения
+    // возвр к исходным значениям
     mat[A_val][B_val] = saveA; 
     mat[A_val][B_val+1] = saveB;
     mat[A_val+1][B_val] = saveC;
     mat[A_val+1][B_val+1] = saveD;
     
-    // ищем строки с нулями
+    //ищем строки с нулями
     int zero_count = 0;
     for (int i = 0; i < row_cnt; i++) {
         for (int j = 0; j < col_cnt; j++) {
@@ -79,7 +79,7 @@ void deleteRows(int**& mat, int& row_cnt, int& col_cnt, int* rows_to_delete) {
         return;
     }
     
-    // освобождаем удаляемые строки
+    //освобождаем строки
     for (int k = 1; k <= delete_count; k++) {
         int row_to_delete = rows_to_delete[k];
         if (row_to_delete < row_cnt && mat[row_to_delete] != NULL) {
@@ -87,8 +87,8 @@ void deleteRows(int**& mat, int& row_cnt, int& col_cnt, int* rows_to_delete) {
             mat[row_to_delete] = NULL;
         }
     }
+
     
-    // сдвигаем оставшиеся строки
     int new_index = 0;
     for (int i = 0; i < row_cnt; i++) {
         if (mat[i] != NULL) {
@@ -100,7 +100,6 @@ void deleteRows(int**& mat, int& row_cnt, int& col_cnt, int* rows_to_delete) {
         }
     }
     
-    // изменяем размер массива указателей
     if (new_index > 0) {
         int** temp = (int**)realloc(mat, new_index * sizeof(int*));
         if (temp != NULL) {
