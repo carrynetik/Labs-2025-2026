@@ -9,10 +9,12 @@ class Car {
 public:
     string brand;
 
+    // конструктор по умолчанию
     Car() : brand("Mercedes"), model("GL500"),
         bodyNumber("AB1234"), regNumber("M500MM"), mileage(160000) {
     }
 
+    // конструктор с параметрами
     Car(string brand, string model, string bodyNumber,
         string regNumber, int mileage)
         : brand(brand), model(model), mileage(mileage) {
@@ -20,6 +22,7 @@ public:
         setRegNumber(regNumber);
     }
 
+    // конструктор копирования
     Car(const Car& other) {
         brand = other.brand;
         model = other.model;
@@ -28,10 +31,12 @@ public:
         mileage = other.mileage;
     }
 
+    // деструктор
     ~Car() {
-        cout << "Объект Car удалён из памяти" << endl;
+        cout << "деструктор car вызван" << endl;
     }
 
+    // получение данных
     string getBrand() const { return brand; }
     string getModel() const { return model; }
     string getBodyNumber() const { return bodyNumber; }
@@ -39,48 +44,50 @@ public:
     int getMileage() const { return mileage; }
 
     void setBodyNumber(const string& number) {
-        if (number.size() != 6)
-            throw invalid_argument("Некорректная длина номера кузова");
+        if (number.length() != 6)
+            throw invalid_argument("неверная длина номера кузова");
 
         for (char c : number) {
             if (!isalnum(c))
-                throw invalid_argument("Номер кузова содержит недопустимые символы");
+                throw invalid_argument("неверный формат номера кузова");
         }
 
         bodyNumber = number;
     }
 
     void setRegNumber(const string& number) {
-        if (number.size() != 6)
-            throw invalid_argument("Неверная длина госномера");
+        if (number.length() != 6)
+            throw invalid_argument("неверная длина гос номера");
 
-        if (!(isalpha(number[0]) &&
-              isdigit(number[1]) &&
-              isdigit(number[2]) &&
-              isdigit(number[3]) &&
-              isalpha(number[4]) &&
-              isalpha(number[5]))) {
-            throw invalid_argument("Госномер не соответствует формату А555АА");
+        if (!isalpha(number[0]) ||
+            !isdigit(number[1]) ||
+            !isdigit(number[2]) ||
+            !isdigit(number[3]) ||
+            !isalpha(number[4]) ||
+            !isalpha(number[5])) {
+            throw invalid_argument("формат гос номера A555AA");
         }
 
         regNumber = number;
     }
 
-    void rollbackMileage(int value) {
-        if (value <= 0)
-            throw invalid_argument("Значение скрутки некорректно");
+    // изменение пробега
+    void rollbackMileage(int x) {
+        if (x <= 0)
+            throw invalid_argument("некорректное значение");
 
-        if (mileage - value < 0)
-            throw invalid_argument("Пробег не может быть меньше нуля");
+        if (mileage - x < 0)
+            throw invalid_argument("пробег не может быть отрицательным");
 
-        mileage -= value;
+        mileage -= x;
     }
 
+    // вывод информации
     void printInfo() const {
         cout << "Марка: " << brand << endl;
         cout << "Модель: " << model << endl;
-        cout << "Кузов: " << bodyNumber << endl;
-        cout << "Госномер: " << regNumber << endl;
+        cout << "Номер кузова: " << bodyNumber << endl;
+        cout << "Гос. номер: " << regNumber << endl;
         cout << "Пробег: " << mileage << endl;
     }
 
@@ -98,6 +105,7 @@ int main() {
 
     try {
         Car car;
+
         car.brand = "Mercedes";
         car.setBodyNumber("ZX9087");
         car.setRegNumber("A777AA");
@@ -105,7 +113,7 @@ int main() {
         car.printInfo();
     }
     catch (const exception& e) {
-        cout << "Ошибка выполнения: " << e.what() << endl;
+        cout << "Ошибка: " << e.what() << endl;
     }
 
     return 0;
