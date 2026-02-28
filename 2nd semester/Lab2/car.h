@@ -15,11 +15,9 @@ private:
     string bodyNumber;
     string regNumber;
     int mileage;
-
     vector<string> items;
 
     static const int BODY_LEN = 6;
-
     bool checkBody(string body);
     bool checkReg(string reg);
 
@@ -27,13 +25,12 @@ public:
     Car();
     Car(string b, string m, string body, string reg, int mil);
     Car(const Car& other);
+    Car& operator=(const Car& other);
     ~Car();
 
-    Car& operator=(const Car& other);
-
-    Car operator+(Car& other);
-    Car operator-(Car& other);
-    Car operator/(Car& other);
+    Car operator+(const Car& other);
+    Car operator-(const Car& other);
+    Car operator/(const Car& other);
 
     void setBrand(string b);
     void setModel(string m);
@@ -42,11 +39,11 @@ public:
     void setMileage(int m);
 
     void rollbackMileage(int km);
-
     void addItem(string item);
     void removeItem(int id);
-
     void printInfo();
+
+    string getReg() const { return regNumber; }
 };
 
 string genReg();

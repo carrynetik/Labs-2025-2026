@@ -3,24 +3,27 @@
 int main() {
     srand(time(0));
 
-    Car a;
-    a.addItem("wheel");
-    a.addItem("engine");
-    a.addItem("door");
+    Car a("Audi", "A6", "A111AA", genReg(), 50000);
+    a.addItem("spare_wheel");
+    a.addItem("tools");
+    a.addItem("jacket");
 
-    Car b("BMW", "X5", "B123CD", genReg(), 120000);
-    b.addItem("door");
-    b.addItem("mirror");
+    Car b("BMW", "M5", "B222BB", genReg(), 30000);
+    b.addItem("jacket");
+    b.addItem("first_aid_kit");
+    b.addItem("tools");
+
+    cout << "Car A: "; a.printInfo();
+    cout << "Car B: "; b.printInfo();
 
     Car c = a + b;
-    Car d = a - b;
-    Car e = a / b;
+    cout << "A + B: "; c.printInfo();
 
-    a.printInfo();
-    b.printInfo();
-    c.printInfo();
-    d.printInfo();
-    e.printInfo();
+    Car d = a - b;
+    cout << "A - B: "; d.printInfo();
+
+    Car e = a / b;
+    cout << "A / B: "; e.printInfo();
 
     return 0;
 }
