@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Установка валидаторов
     QRegularExpression rxAuthor("[А-Я][а-я]{0,} [А-Я]{1,2}");
     ui->author->setValidator(new QRegularExpressionValidator(rxAuthor, this));
 
@@ -29,7 +28,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// Очистка ошибок при вводе
 void MainWindow::on_author_textEdited() { ui->author_error->setText(""); }
 void MainWindow::on_name_textEdited() { ui->name_error->setText(""); }
 void MainWindow::on_code_textEdited() { ui->code_error->setText(""); }
@@ -43,8 +41,7 @@ void MainWindow::on_discard_pressed()
     ui->name->clear();
     ui->code->clear();
     ui->contents->clear();
-    
-    // Сброс RadioButton
+
     ui->type_paper->setAutoExclusive(false);
     ui->type_paper->setChecked(false);
     ui->type_paper->setAutoExclusive(true);
@@ -53,12 +50,11 @@ void MainWindow::on_discard_pressed()
     ui->type_digital->setChecked(false);
     ui->type_digital->setAutoExclusive(true);
 
-    // Сброс CheckBox
+
     ui->genre_detective->setChecked(false);
     ui->genre_fiction->setChecked(false);
     ui->genre_novel->setChecked(false);
 
-    // Очистка лейблов с ошибками
     ui->author_error->setText("");
     ui->name_error->setText("");
     ui->code_error->setText("");
@@ -70,7 +66,6 @@ void MainWindow::on_save_pressed()
 {
     bool hasError = false;
 
-    // Проверка Автора
     QString textAuthor = ui->author->text();
     if (textAuthor.isEmpty()) {
         ui->author_error->setText("Поле пустое");
@@ -79,8 +74,6 @@ void MainWindow::on_save_pressed()
         ui->author_error->setText("Нужен пробел перед инициалами");
         hasError = true;
     }
-
-    // Проверка Названия
     QString textName = ui->name->text();
     if (textName.isEmpty()) {
         ui->name_error->setText("Поле пустое");
@@ -90,7 +83,6 @@ void MainWindow::on_save_pressed()
         hasError = true;
     }
 
-    // Проверка Кода
     QString textCode = ui->code->text();
     if (textCode.isEmpty()) {
         ui->code_error->setText("Поле пустое");
@@ -103,7 +95,6 @@ void MainWindow::on_save_pressed()
         hasError = true;
     }
 
-    // Проверка Наполнения
     QString textContents = ui->contents->text();
     if (textContents.isEmpty()) {
         ui->contents_error->setText("Поле пустое");
@@ -126,15 +117,13 @@ void MainWindow::on_save_pressed()
         }
     }
 
-    // Проверка Типа издания
     if (!ui->type_digital->isChecked() && !ui->type_paper->isChecked()) {
         ui->type_error->setText("Выберите тип");
         hasError = true;
     }
 
-    if (hasError) return; // Если есть ошибки, тормозим
+    if (hasError) return;
 
-    // Сбор данных
     QString finalType = ui->type_paper->isChecked() ? "Бумажное" : "Электронное";
     std::vector<QString> finalGenres;
 
@@ -142,7 +131,7 @@ void MainWindow::on_save_pressed()
     if (ui->genre_fiction->isChecked()) finalGenres.push_back("Фантастика");
     if (ui->genre_novel->isChecked()) finalGenres.push_back("Роман");
 
-    // Запись
+    
     book newBook(textAuthor, textName, textCode, textContents, finalType, finalGenres);
     newBook.write_to_file();
 }
