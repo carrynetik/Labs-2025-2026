@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Автор*</string>
+     <string>Автор</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="name">
@@ -57,7 +57,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Название*</string>
+     <string>Название</string>
     </property>
    </widget>
    <widget class="QLabel" name="code_label">
@@ -70,7 +70,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Код*</string>
+     <string>Код</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="code">
@@ -93,7 +93,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Наполнение*</string>
+     <string>Наполнение</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="contents">
@@ -116,7 +116,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип издания*</string>
+     <string>Тип издания</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="type_paper">
