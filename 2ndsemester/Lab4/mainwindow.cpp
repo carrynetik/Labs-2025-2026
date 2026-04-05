@@ -10,10 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QRegularExpression rxAuthor("[А-Я][а-я]{0,} [А-Я]{1,2}");
+    QRegularExpression rxAuthor("[А-ЯЁ][а-яё]{0,} [А-ЯЁ]{1,2}");
     ui->author->setValidator(new QRegularExpressionValidator(rxAuthor, this));
 
-    QRegularExpression rxName("\"[а-я А-Я?,.()*\"-+=0-9]{0,}\"");
+    QRegularExpression rxName("\"[а-яё А-ЯЁ?,.()*\"-+=0-9]{0,}\"");
     ui->name->setValidator(new QRegularExpressionValidator(rxName, this));
 
     QRegularExpression rxCode("[0-9]{1,3}-[0-9]{1,5}");
