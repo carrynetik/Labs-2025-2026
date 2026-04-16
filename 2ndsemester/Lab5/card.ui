@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>card</class>
+ <widget class="QWidget" name="card">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>300</width><height>400</height></rect></property>
+  <widget class="QLabel" name="pic">
+   <property name="geometry"><rect><x>50</x><y>120</y><width>200</width><height>180</height></rect></property>
+   <property name="alignment"><set>Qt::AlignCenter</set></property>
+  </widget>
+  <widget class="QLabel" name="name">
+   <property name="geometry"><rect><x>10</x><y>10</y><width>280</width><height>40</height></rect></property>
+   <property name="font"><font><pointsize>16</pointsize><bold>true</bold></font></property>
+   <property name="alignment"><set>Qt::AlignCenter</set></property>
+  </widget>
+  <widget class="QLabel" name="magician_ability">
+   <property name="geometry"><rect><x>10</x><y>50</y><width>280</width><height>30</height></rect></property>
+   <property name="font"><font><pointsize>12</pointsize></font></property>
+   <property name="alignment"><set>Qt::AlignCenter</set></property>
+  </widget>
+  <widget class="QLabel" name="magician_health">
+   <property name="geometry"><rect><x>20</x><y>80</y><width>120</width><height>30</height></rect></property>
+   <property name="font"><font><pointsize>12</pointsize></font></property>
+   <property name="styleSheet"><string>color: green;</string></property>
+  </widget>
+  <widget class="QLabel" name="magician_mana">
+   <property name="geometry"><rect><x>160</x><y>80</y><width>120</width><height>30</height></rect></property>
+   <property name="font"><font><pointsize>12</pointsize></font></property>
+   <property name="styleSheet"><string>color: blue;</string></property>
+  </widget>
+  <widget class="QLabel" name="enemy_health">
+   <property name="geometry"><rect><x>10</x><y>50</y><width>280</width><height>30</height></rect></property>
+   <property name="font"><font><pointsize>12</pointsize></font></property>
+   <property name="styleSheet"><string>color: darkred;</string></property>
+   <property name="alignment"><set>Qt::AlignCenter</set></property>
+  </widget>
+  <widget class="QLabel" name="enemy_armor">
+   <property name="geometry"><rect><x>10</x><y>80</y><width>280</width><height>30</height></rect></property>
+   <property name="font"><font><pointsize>12</pointsize></font></property>
+   <property name="alignment"><set>Qt::AlignCenter</set></property>
+  </widget>
+  <widget class="QPushButton" name="print">
+   <property name="geometry"><rect><x>30</x><y>330</y><width>100</width><height>40</height></rect></property>
+   <property name="text"><string>Печать</string></property>
+  </widget>
+  <widget class="QPushButton" name="cancel">
+   <property name="geometry"><rect><x>170</x><y>330</y><width>100</width><height>40</height></rect></property>
+   <property name="text"><string>Отмена</string></property>
+  </widget>
+ </widget>
+ <resources/>
+</ui>

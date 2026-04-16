@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>500</width><height>400</height></rect></property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="list">
+    <property name="geometry"><rect><x>20</x><y>20</y><width>460</width><height>280</height></rect></property>
+   </widget>
+   <widget class="QPushButton" name="load">
+    <property name="geometry"><rect><x>150</x><y>310</y><width>200</width><height>40</height></rect></property>
+    <property name="text"><string>Загрузить из файла</string></property>
+   </widget>
+   <widget class="QLabel" name="load_error">
+    <property name="geometry"><rect><x>20</x><y>360</y><width>460</width><height>20</height></rect></property>
+    <property name="styleSheet"><string>color: red;</string></property>
+    <property name="alignment"><set>Qt::AlignCenter</set></property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+</ui>
