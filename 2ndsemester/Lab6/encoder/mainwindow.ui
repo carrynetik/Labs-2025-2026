@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>400</width><height>350</height></rect></property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+    <item><widget class="QLineEdit" name="line_name"><property name="placeholderText"><string>Название</string></property></widget></item>
+    <item><widget class="QLineEdit" name="line_desc"><property name="placeholderText"><string>Описание</string></property></widget></item>
+    <item><widget class="QLineEdit" name="line_coef"><property name="placeholderText"><string>Коэффициент защиты</string></property></widget></item>
+    <item><widget class="QLineEdit" name="line_type"><property name="placeholderText"><string>Тип защиты</string></property></widget></item>
+    <item><widget class="QPushButton" name="btn_add"><property name="text"><string>Добавить в JSON</string></property></widget></item>
+    <item><widget class="QPushButton" name="btn_txt"><property name="text"><string>Загрузить из .txt</string></property></widget></item>
+    <item><widget class="QLabel" name="label_status"><property name="text"><string/></property></widget></item>
+   </layout>
+  </widget>
+ </widget>
+</ui>
