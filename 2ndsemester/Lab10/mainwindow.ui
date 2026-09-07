@@ -1,31 +1,399 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
+
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>580</width>
+    <height>450</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
+
+  <property name="minimumSize">
+   <size>
+    <width>580</width>
+    <height>450</height>
+   </size>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
+
+  <property name="windowTitle">
+   <string>Регистрация</string>
+  </property>
+
+  <property name="styleSheet">
+   <string notr="true">
+QWidget#centralwidget {
+    background-color: #e4e7eb;
+}
+
+QLabel {
+    color: #202020;
+    font-size: 13px;
+}
+
+QLineEdit {
+    min-height: 28px;
+    color: #202020;
+    background-color: #ffffff;
+    border: 1px solid #777777;
+    padding: 1px 5px;
+    font-size: 13px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #245b91;
+}
+
+QPushButton {
+    min-height: 28px;
+    color: #101010;
+    background-color: #c5d5e5;
+    border: 1px solid #6c7884;
+    padding: 3px 9px;
+    font-size: 13px;
+}
+
+QPushButton:hover {
+    background-color: #b5c9dc;
+}
+
+QPushButton:pressed {
+    background-color: #9fb8cf;
+}
+
+QGroupBox {
+    color: #202020;
+    border: 1px solid #888888;
+    margin-top: 8px;
+    padding-top: 8px;
+    font-size: 13px;
+}
+
+QCheckBox {
+    color: #202020;
+    font-size: 13px;
+}
+   </string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+
+    <property name="leftMargin">
+     <number>20</number>
+    </property>
+
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+
+    <property name="rightMargin">
+     <number>20</number>
+    </property>
+
+    <property name="bottomMargin">
+     <number>20</number>
+    </property>
+
+    <property name="spacing">
+     <number>14</number>
+    </property>
+
+    <item>
+     <layout class="QHBoxLayout" name="contentLayout">
+
+      <property name="spacing">
+       <number>20</number>
+      </property>
+
+      <item>
+       <layout class="QVBoxLayout" name="photoLayout">
+
+        <property name="spacing">
+         <number>8</number>
+        </property>
+
+        <item>
+         <widget class="QLabel" name="photoLabel">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>150</height>
+           </size>
+          </property>
+
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>150</height>
+           </size>
+          </property>
+
+          <property name="styleSheet">
+           <string notr="true">
+background-color: #ffffff;
+border: 1px solid #777777;
+color: #555555;
+           </string>
+          </property>
+
+          <property name="text">
+           <string>Фото</string>
+          </property>
+
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="loadPhotoButton">
+          <property name="text">
+           <string>Загрузить фото</string>
+          </property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer name="photoSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+
+       </layout>
+      </item>
+
+      <item>
+       <layout class="QFormLayout" name="formLayout">
+
+        <property name="horizontalSpacing">
+         <number>10</number>
+        </property>
+
+        <property name="verticalSpacing">
+         <number>9</number>
+        </property>
+
+        <property name="labelAlignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+
+        <item row="0" column="0">
+         <widget class="QLabel" name="nameLabel">
+          <property name="text">
+           <string>Имя:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="nameEdit">
+          <property name="placeholderText">
+           <string>Александр</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="1" column="0">
+         <widget class="QLabel" name="surnameLabel">
+          <property name="text">
+           <string>Фамилия:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="surnameEdit">
+          <property name="placeholderText">
+           <string>Постригань</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="2" column="0">
+         <widget class="QLabel" name="nicknameLabel">
+          <property name="text">
+           <string>Никнейм:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="nicknameEdit">
+          <property name="placeholderText">
+           <string>От 3 до 20 символов</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="3" column="0">
+         <widget class="QLabel" name="passwordLabel">
+          <property name="text">
+           <string>Пароль:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="passwordEdit">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+
+          <property name="placeholderText">
+           <string>Минимум 6 символов</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="4" column="0">
+         <widget class="QLabel" name="emailLabel">
+          <property name="text">
+           <string>Почта:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="emailEdit">
+          <property name="placeholderText">
+           <string>example@mail.ru</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="5" column="0">
+         <widget class="QLabel" name="idKeyLabel">
+          <property name="text">
+           <string>ID-Key:</string>
+          </property>
+         </widget>
+        </item>
+
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="idKeyEdit">
+          <property name="placeholderText">
+           <string>А111-11А-А</string>
+          </property>
+         </widget>
+        </item>
+
+       </layout>
+      </item>
+
+     </layout>
+    </item>
+
+    <item>
+     <widget class="QGroupBox" name="serversGroup">
+      <property name="title">
+       <string>Серверы</string>
+      </property>
+
+      <layout class="QHBoxLayout" name="serversLayout">
+
+       <item>
+        <widget class="QCheckBox" name="europeCheckBox">
+         <property name="text">
+          <string>Европа</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QCheckBox" name="asiaCheckBox">
+         <property name="text">
+          <string>Азия</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QCheckBox" name="americaCheckBox">
+         <property name="text">
+          <string>Америка</string>
+         </property>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QPushButton" name="registerButton">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>36</height>
+       </size>
+      </property>
+
+      <property name="text">
+       <string>Регистрация</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QLabel" name="statusLabel">
+      <property name="styleSheet">
+       <string notr="true">
+color: #8b2020;
+font-size: 13px;
+       </string>
+      </property>
+
+      <property name="text">
+       <string/>
+      </property>
+
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <spacer name="bottomSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
+
  <resources/>
  <connections/>
 </ui>
