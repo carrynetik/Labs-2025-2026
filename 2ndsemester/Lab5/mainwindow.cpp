@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QRegularExpression>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)

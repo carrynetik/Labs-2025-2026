@@ -1,5 +1,6 @@
 #include "lib.h"
 #include "ui_card.h"
+#include <QPixmap>
 
 ArmorStats::ArmorStats() {
     head = 0;
@@ -23,8 +24,11 @@ QString Mage::getListItem() {
 }
 
 void Mage::Craft(Ui::card* ui) {
-    ui->pic->setText("[ ФОТО МАГА ]");
-    ui->pic->setStyleSheet("background-color: lightblue; font-weight: bold;");
+    ui->pic->setPixmap(
+    QPixmap(":/images/rs/mag.png")
+        .scaled(ui->pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation)
+    );
+    ui->pic->setAlignment(Qt::AlignCenter);
     
     ui->name->setText(this->getName());
     ui->name->setStyleSheet("color: black;");
@@ -58,8 +62,11 @@ QString Monster::getListItem() {
 }
 
 void Monster::Craft(Ui::card* ui) {
-    ui->pic->setText("[ ФОТО ВРАГА ]");
-    ui->pic->setStyleSheet("background-color: lightcoral; font-weight: bold;");
+    ui->pic->setPixmap(
+    QPixmap(":/images/rs/vrag.png")
+        .scaled(ui->pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation)
+    );
+    ui->pic->setAlignment(Qt::AlignCenter);
     
     ui->name->setText(this->getName());
     

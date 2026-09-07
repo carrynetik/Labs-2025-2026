@@ -18,3 +18,6 @@ HEADERS += \
 FORMS += \
     card.ui \
     mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
