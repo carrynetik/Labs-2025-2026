@@ -4,21 +4,36 @@
 #include <QString>
 #include "inc.h"
 
-struct Shield {
-    QString title;        // Название
-    QString description;  // Описание
-    double defense;       // Коэффициент защиты
-    QString type;         // Тип защиты
+struct Shield
+{
+    QString title;
+    QString description;
+    double defense = 0.0;
+    QString type;
 
-    // Проверка на "битость"
-    bool isValid() const {
-        if (title.isEmpty() || description.isEmpty() || type.isEmpty()) return false;
-        if (defense <= 0) return false;
+    bool isValid() const
+    {
+        if (title.trimmed().isEmpty()) {
+            return false;
+        }
+
+        if (description.trimmed().isEmpty()) {
+            return false;
+        }
+
+        if (type.trimmed().isEmpty()) {
+            return false;
+        }
+
+        if (defense <= 0) {
+            return false;
+        }
+
         return true;
     }
 
-    // Перевод в JSON
-    json to_json() const {
+    json to_json() const
+    {
         return {
             {"name", title.toStdString()},
             {"desc", description.toStdString()},
@@ -27,14 +42,42 @@ struct Shield {
         };
     }
 
-    // Загрузка из JSON
-    static Shield from_json(const json& j) {
-        Shield s;
-        if (j.contains("name")) s.title = QString::fromStdString(j["name"]);
-        if (j.contains("desc")) s.description = QString::fromStdString(j["desc"]);
-        if (j.contains("coef")) s.defense = j["coef"];
-        if (j.contains("type")) s.type = QString::fromStdString(j["type"]);
-        return s;
+    static Shield from_json(const json& object)
+    {
+        Shield shield;
+
+        if (!object.is_object()) {
+            return shield;
+        }
+
+        if (object.contains("name") &&
+            object["name"].is_string()) {
+            shield.title = QString::fromStdString(
+                object["name"].get<std::string>()
+            );
+        }
+
+        if (object.contains("desc") &&
+            object["desc"].is_string()) {
+            shield.description = QString::fromStdString(
+                object["desc"].get<std::string>()
+            );
+        }
+
+        if (object.contains("coef") &&
+            object["coef"].is_number()) {
+            shield.defense =
+                object["coef"].get<double>();
+        }
+
+        if (object.contains("type") &&
+            object["type"].is_string()) {
+            shield.type = QString::fromStdString(
+                object["type"].get<std::string>()
+            );
+        }
+
+        return shield;
     }
 };
 
