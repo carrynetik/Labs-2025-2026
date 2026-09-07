@@ -1,1 +1,6 @@
-<RCC/>
+<RCC>
+<qresource prefix="/images">
+        <file>rs/mag.png</file>
+        <file>rs/vrag.png</file>
+    </qresource>
+</RCC>
