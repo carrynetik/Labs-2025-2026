@@ -512,13 +512,45 @@ void MainWindow::on_registerButton_clicked()
         return;
     }
 
-    QMessageBox::information(
-        this,
-        "Регистрация",
+    QMessageBox messageBox(this);
+
+    messageBox.setWindowTitle(
+        "Регистрация"
+    );
+
+    messageBox.setIcon(
+        QMessageBox::Information
+    );
+
+    messageBox.setText(
         "Аккаунт успешно создан.\n\n"
         "Папка:\n" +
         QDir::toNativeSeparators(accountPath)
     );
+
+    messageBox.setStandardButtons(
+        QMessageBox::Ok
+    );
+
+    messageBox.setStyleSheet(
+        "QMessageBox {"
+        "    background-color: #f0f0f0;"
+        "}"
+        "QLabel {"
+        "    color: #202020;"
+        "    font-size: 13px;"
+        "    min-width: 340px;"
+        "}"
+        "QPushButton {"
+        "    color: #101010;"
+        "    background-color: #c5d5e5;"
+        "    border: 1px solid #6c7884;"
+        "    min-width: 70px;"
+        "    min-height: 26px;"
+        "}"
+    );
+
+    messageBox.exec();
 
     clearForm();
 
