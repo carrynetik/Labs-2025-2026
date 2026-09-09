@@ -3,6 +3,7 @@
 
 #include <QFile>
 #include <QFileDialog>
+#include <QStandardPaths>
 #include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,8 +21,11 @@ MainWindow::~MainWindow()
 bool writeJson(const Shield& shield, QString& errorMessage)
 {
     json database = json::array();
+    const QString outputPath =
+        QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)
+        + "/output.json";
 
-    QFile inputFile("output.json");
+    QFile inputFile(outputPath);
 
     if (inputFile.exists()) {
         if (!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -50,7 +54,7 @@ bool writeJson(const Shield& shield, QString& errorMessage)
 
     database.push_back(shield.to_json());
 
-    QFile outputFile("output.json");
+    QFile outputFile(outputPath);
 
     if (!outputFile.open(QIODevice::WriteOnly |
                          QIODevice::Text |
