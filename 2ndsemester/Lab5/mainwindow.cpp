@@ -35,7 +35,6 @@ void MainWindow::on_load_pressed() {
         return;
     }
 
-    // Очищаем старые данные при новой загрузке
     for (NPC* npc : entities) delete npc;
     entities.clear();
     ui->list->clear();
@@ -48,7 +47,6 @@ void MainWindow::on_load_pressed() {
         lineNum++;
         if (line.isEmpty()) continue;
 
-        // Разбиваем строку по запятым
         QStringList parts = line.split(QRegularExpression(",\\s*"));
         
         if (parts.size() < 8) {
@@ -58,8 +56,8 @@ void MainWindow::on_load_pressed() {
 
         int code = parts[0].toInt();
         QString name = parts[1];
-        QString typeInfo = parts[2]; // Стихия или Редкость
-        unsigned int val = parts[3].toUInt(); // Мана или Урон
+        QString typeInfo = parts[2];
+        unsigned int val = parts[3].toUInt();
         unsigned int hp = parts[4].toUInt();
         
         ArmorStats armor;
@@ -78,7 +76,6 @@ void MainWindow::on_load_pressed() {
     }
     file.close();
 
-    // Заполняем список на экране
     for (NPC* npc : entities) {
         ui->list->addItem(npc->getListItem());
     }

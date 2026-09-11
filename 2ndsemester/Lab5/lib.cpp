@@ -8,7 +8,6 @@ ArmorStats::ArmorStats() {
     legs = 0;
 }
 
-// === МАГ ===
 Mage::Mage(QString name, QString element, unsigned int mana, unsigned int hp, ArmorStats armor) {
     m_name = name;
     m_element = element;
@@ -46,7 +45,6 @@ void Mage::Craft(Ui::card* ui) {
     ui->enemy_health->setText("");
 }
 
-// === ВРАГ ===
 Monster::Monster(QString name, QString rarity, unsigned int dmg, unsigned int hp, ArmorStats armor) {
     m_name = name;
     m_rarity = rarity;
