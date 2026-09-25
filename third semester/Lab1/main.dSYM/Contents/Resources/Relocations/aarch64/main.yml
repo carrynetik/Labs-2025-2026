@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/alexander/Documents/GitHub/Labs-2025-2026/third semester/Lab1/main'
+relocations:     []
+...
